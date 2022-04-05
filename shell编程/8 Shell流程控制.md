@@ -138,6 +138,23 @@ done
 # The value is: 5
 ```
 
+可以使用 `seq start_idx end_idx` 生成序列，例如：
+```sh
+for i in $(seq 0 5)
+do
+    echo "The value is: ${i}"
+done
+```
+输出为：
+```
+# The value is: 0
+# The value is: 1
+# The value is: 2
+# The value is: 3
+# The value is: 4
+# The value is: 5
+```
+
 ### 2.2 while 语句
 
 * while循环用于不断执行一系列命令，也用于从输入文件中读取数据；命令通常为测试条件。其格式为：
