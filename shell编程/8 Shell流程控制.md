@@ -48,7 +48,9 @@ fi
 # a 小于 b
 ```
 
-* **`注意：`** 和Java、PHP等语言不一样，sh的流程控制不可为空。如果else分支没有语句执行，就不要写这个else。
+* **`注意：`** 
+  * 和Java、PHP等语言不一样，sh的流程控制不可为空。如果else分支没有语句执行，就不要写这个else
+  * 方括号中的语句与左右括号都要用空格隔开
 
 ### 1.2 case语句
 
@@ -99,6 +101,80 @@ esac
 #3
 #你选择了 3
 ```
+
+### 1.3. 判断文件种类
+1. 文件夹
+    ```sh
+    # 如果不存在videoName所指出的文件夹就创建该文件夹
+    if [ ! -d ${videoName} ]; then
+        mkdir ${videoName}
+    fi
+    ```
+2. 文件种类
+    ```sh
+    # 如果videoName所指出的文件夹存在就获取文件夹内的文件
+    if [ -d ${videoName} ]; then
+        videoList=${ls $videoName}
+        if [ ${videoList[0]} == "mp4" ]; then
+            echo "${videoList[0]}"
+        fi
+    fi
+    ```
+3. 其他
+
+    [ -a FILE ] 如果 FILE 存在则为真
+
+    [ -b FILE ] 如果 FILE 存在且是一个块特殊文件则为真
+
+    [ -c FILE ] 如果 FILE 存在且是一个字特殊文件则为真
+
+    [ -d FILE ] 如果 FILE 存在且是一个目录则为真
+
+    [ -e FILE ] 如果 FILE 存在则为真
+
+    [ -f FILE ] 如果 FILE 存在且是一个普通文件则为真
+
+    [ -g FILE ] 如果 FILE 存在且已经设置了SGID则为真
+
+    [ -h FILE ] 如果 FILE 存在且是一个符号连接则为真
+
+    [ -k FILE ] 如果 FILE 存在且已经设置了粘制位则为真
+
+    [ -p FILE ] 如果 FILE 存在且是一个名字管道(F如果O)则为真
+
+    [ -r FILE ] 如果 FILE 存在且是可读的则为真
+
+    [ -s FILE ] 如果 FILE 存在且大小不为0则为真
+
+    [ -t FD ] 如果文件描述符 FD 打开且指向一个终端则为真
+
+    [ -u FILE ] 如果 FILE 存在且设置了SUID (set user ID)则为真
+
+    [ -w FILE ] 如果 FILE 如果 FILE 存在且是可写的则为真
+
+    [ -x FILE ] 如果 FILE 存在且是可执行的则为真
+
+    [ -O FILE ] 如果 FILE 存在且属有效用户ID则为真
+
+    [ -G FILE ] 如果 FILE 存在且属有效用户组则为真
+
+    [ -L FILE ] 如果 FILE 存在且是一个符号连接则为真
+
+    [ -N FILE ] 如果 FILE 存在 and has been mod如果ied since it was last read则为真
+
+    [ -S FILE ] 如果 FILE 存在且是一个套接字则为真
+    
+    [ FILE1 -nt FILE2 ] 如果 FILE1 has been changed more recently than FILE2, 或者如果 FILE1 存在 and FILE2 不存在则为真
+
+    [ FILE1 -ot FILE2 ] 如果 FILE1 比 FILE2 要老, 或者 FILE2 存在且 FILE1 不存在则为真
+
+    [ FILE1 -ef FILE2 ] 如果 FILE1 和 FILE2 指向相同的设备和节点号则为真
+
+    [ -o OPTIONNAME ] 如果 shell 选项 “OPTIONNAME” 开启则为真
+
+    [ -z STRING ] “STRING” 的长度为零则为真
+
+    [ -n STRING ] or [ STRING ] “STRING” 的长度为非零 non-zero则为真
 
 ## 2. 循环语句
 
