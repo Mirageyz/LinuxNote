@@ -87,4 +87,18 @@ Shell数组支持在数组中添加元素，有以下几种方式：
    ```
    0 1 2 5
    ```
-3. 
+
+### 遍历数组
+1. ```sh
+   for(( i=0;i<${#array[@]};i++)) do
+      #${#array[@]}获取数组长度用于循环
+      echo ${array[i]};
+   done
+   ```
+2. ```sh
+   for element in ${array[@]}
+       #也可以写成for element in ${array[*]}
+       do
+       echo $element
+   done
+   ```
